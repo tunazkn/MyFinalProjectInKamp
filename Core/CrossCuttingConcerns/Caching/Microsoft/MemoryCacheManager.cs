@@ -62,9 +62,7 @@ namespace Core.CrossCuttingConcerns.Caching.Microsoft
             foreach (var key in keysToRemove)
             {
                 _memoryCache.Remove(key);
-            }
-            //23:15 DERSTEYİZ
-            //PUSH BASTIM :)
+            } 
         }
     }
 }

@@ -31,17 +31,15 @@ namespace Business.Concrete
             _productDal = productDal;
             _categoryService = categoryService;
         }
-
-        //00.25 Dersteyiz
+         
         //Claim
         //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
         {
-
             //Aynı isimde ürün eklenemez
-            //Eğer mevcut kategori sayısı 15'i geçtiyse sisteme yeni ürün eklenemez. ve 
+            //Eğer mevcut kategori sayısı 15'i geçtiyse sisteme yeni ürün eklenemez.
             IResult result = BusinessRules.Run(CheckIfProductNameExists(product.ProductName), 
                 CheckIfProductCountOfCategoryCorrect(product.CategoryId), CheckIfCategoryLimitExceded());
 
